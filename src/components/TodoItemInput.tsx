@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {  useRef } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import classes from './TodoItemInput.module.css';
 
