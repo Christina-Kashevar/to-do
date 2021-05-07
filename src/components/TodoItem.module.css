@@ -1,5 +1,8 @@
 .item {
+    display: flex;
+    justify-content: space-between;
     margin: 1rem 0;
-    padding: 1rem;
+    align-items: center;
+    padding: 0 1rem;
     background-color: #d1ccfdfc;
 }

@@ -1,6 +1,18 @@
 .list {
-    width: 40rem;
+    width: 60%;
     margin: 2rem auto;
     list-style: none;
     padding: 0;
+}
+
+@media (max-width: 1300px) {
+    .list {
+        width: 70%;
+    }
+}
+
+@media (max-width: 800px) {
+    .list {
+        width: 80%;
+    }
 }

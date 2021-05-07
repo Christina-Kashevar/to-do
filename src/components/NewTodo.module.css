@@ -1,5 +1,5 @@
 .form {
-    width: 40rem;
+    width: 60%;
     margin: 2rem auto;
 }
 
@@ -13,6 +13,7 @@
 .form input {
     display: block;
     box-sizing: border-box;
+    background-color: #ebf0ff;
     width: 100%;
     font-size: 1.5rem;
     padding: 0.5rem;
@@ -23,6 +24,11 @@
     border-bottom-left-radius: 0;
     margin-bottom: 0.5rem;
 }
+
+.form input::placeholder {
+    color: rgb(177, 171, 171);
+    font-size: 0.8em;
+  }
 
 .form button {
     background-color: #496eeb;
@@ -38,4 +44,16 @@
 .form button:active {
     background-color: #1144eb;
     border-color: #1144eb;
+}
+
+@media (max-width: 1300px) {
+    .form {
+        width: 70%;
+    }
+}
+
+@media (max-width: 800px) {
+    .form {
+        width: 80%;
+    }
 }
