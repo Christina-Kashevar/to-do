@@ -1,17 +1,34 @@
-import IconButton from '@material-ui/core/IconButton';
+import React, { useState } from 'react';
+import TodoItemTextProps from './TodoItemText';
+import TodoItemInput from './TodoItemInput';
 
-import React from 'react';
-import classes from './TodoItem.module.css';
+type TodoItemProps = {
+  text: string,
+  id: string,
+  onDelete: () => void,
+  onEdit: (id: string, text: string) => void
+}
 
+const TodoItem: React.FC<TodoItemProps> = (props) => {
+  const [isEditable, setIsEditable] = useState(false);
 
-const TodoItem: React.FC<{text: string, onClick: () => void}> = (props) => {
+  const editableToggle = () => {
+    setIsEditable((prevState) => !prevState)
+  };
+
+  const editableHandler = () => {
+    setIsEditable(false)
+  }
+
     return (
-        <div className={classes.item}>
-          <li>{props.text}</li>
-          <IconButton onClick={props.onClick}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-           </IconButton>
-        </div>
+        <React.Fragment>
+          { !isEditable ? 
+            <TodoItemTextProps text={props.text} id={props.id} onDelete={props.onDelete} editableToggle={editableToggle}/>
+           :
+            <TodoItemInput text={props.text} id={props.id} changeEditable={editableHandler} onEdit={props.onEdit}/>            
+          }
+
+        </React.Fragment>
         )
 };
 

@@ -13,14 +13,18 @@ function App() {
 
   const deleteTodoHandler = (id: string) => {
     setTodos((prevState) => prevState.filter( el => el.id !== id))
-  }
+  };
 
-  const isAnyTodos = todos.length
+  const editTodoHandler= (id: string, newText: string) => {
+    setTodos((prevState) => prevState.map(el => el.id === id ? {...el, text: newText} : el))
+  };
+
+  const isAnyTodos = todos.length;
 
   return (
     <div className="App">
       <NewTodo onAddTodo={addTodoHandler}/>
-      <Todos items={todos} onClick={deleteTodoHandler}/>
+      <Todos items={todos} onDelete={deleteTodoHandler} onEdit={editTodoHandler}/>
       {!isAnyTodos && <p className={classes.text}>Пока нет задач.</p>}
     </div>
   );
