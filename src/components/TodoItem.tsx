@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import TodoItemTextProps from './TodoItemText';
+import TodoItemText from './TodoItemText';
 import TodoItemInput from './TodoItemInput';
+import Todo from '../models/todo';
 
 type TodoItemProps = {
-  text: string,
-  id: string,
+  todo: Todo,
   onDelete: () => void,
-  onEdit: (id: string, text: string) => void
+  onEdit: (id: string, text: string) => void,
+  onComplete: () => void,
 }
 
 const TodoItem: React.FC<TodoItemProps> = (props) => {
@@ -23,9 +24,9 @@ const TodoItem: React.FC<TodoItemProps> = (props) => {
     return (
         <React.Fragment>
           { !isEditable ? 
-            <TodoItemTextProps text={props.text} id={props.id} onDelete={props.onDelete} editableToggle={editableToggle}/>
+            <TodoItemText todo={props.todo} onDelete={props.onDelete} editableToggle={editableToggle} onComplete={props.onComplete}/>
            :
-            <TodoItemInput text={props.text} id={props.id} changeEditable={editableHandler} onEdit={props.onEdit}/>            
+            <TodoItemInput todo={props.todo} changeEditable={editableHandler} onEdit={props.onEdit}/>            
           }
 
         </React.Fragment>

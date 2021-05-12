@@ -6,6 +6,7 @@ type TodosProps = {
   items: Todo[],
   onDelete: (id: string) => void,
   onEdit: (id: string, text: string) => void,
+  onComplete: (id: string) => void,
 }
 
 const Todos: React.FC<TodosProps> = (props) => {
@@ -13,11 +14,12 @@ const Todos: React.FC<TodosProps> = (props) => {
     <ul className={classes.list}>
       {props.items.map(item => (
           <TodoItem 
-           key={item.id} 
-           text={item.text} 
+           key={item.id}  
+           todo={item}
            onDelete={() => props.onDelete(item.id)} 
+           onComplete={() => props.onComplete(item.id)} 
            onEdit={props.onEdit}
-           id={item.id}/>
+           />
       ))}
     </ul>
   );
